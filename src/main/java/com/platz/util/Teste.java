@@ -6,30 +6,27 @@
 //package com.platz.util;
 //
 //import com.platz.dao.CategoriaDao;
+//import com.platz.dao.EventoDao;
 //import com.platz.entity.CategoriaEntity;
+//import com.platz.entity.EventoEntity;
+//import com.platz.http.evento.EventoLeitura;
 //import java.util.List;
 //
 ///**
 // *
-// * @author Jose da Cruz
+// * @author Anderson
 // */
 //public class Teste {
 //
 //    public static void main(String[] args) {
-//        
-//        try {
-//            List<CategoriaEntity> categoriaEntity = new CategoriaDao().buscarPeloNome("e");
-//            
-//            for (CategoriaEntity item : categoriaEntity) {
-//                
-//                System.out.println("Id " + item.getId());
-//                System.out.println("Nome " + item.getNome());
-//            }
+//       
+//        List<EventoEntity> entitys = new EventoDao().listarTodos(EventoEntity.class);
 //
-//        } catch (Exception e) {
-//            System.out.println("ERRO MENSAGE" + e.getMessage());
-//            System.out.println("ERRO CAUSA" + e.getCause());
-//            
+//        for (EventoLeitura evento : new EventoLeitura().converterLista(entitys)) {
+//
+//            System.out.println(evento.getNome());
+//            System.out.println(evento.getCategoria().getNome());
+//
 //        }
 //
 //    }

@@ -5,41 +5,30 @@
  */
 package com.platz.entity;
 
-import com.platz.http.categoria.CategoriaLeitura;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Length;
 
 /**
  *
  * @author Anderson
  */
 @Entity
-@Table(name = "Categoria")
-public class CategoriaEntity {
-
+@Table (name = "Evento")
+public class EventoEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    @NotNull(message = "O nome deve ser informado")
-    @Length(min = 3, max = 50, message = "O nome deve ter entre 3 e 50 caracteres")
     private String nome;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private CategoriaEntity categoria;
 
-    // Construtores
-    public CategoriaEntity() {
-    }
-
-    public CategoriaEntity(Integer id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-    
-    // Getters and Setters
+    //Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -56,4 +45,13 @@ public class CategoriaEntity {
         this.nome = nome;
     }
 
+    public CategoriaEntity getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaEntity categoria) {
+        this.categoria = categoria;
+    }
+    
+    
 }
